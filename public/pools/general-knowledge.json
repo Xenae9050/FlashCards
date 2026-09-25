@@ -1,0 +1,1534 @@
+{
+  "poolName": "General Knowledge",
+  "description": "A broad mix of general-knowledge questions spanning geography, science, history, nature, food and more.",
+  "category": "General",
+  "author": "FlashCards example pack",
+  "version": "1.0",
+  "_comment": "This file is an ILLUSTRATIVE EXAMPLE of the pool schema described in detailed-brief.txt (Section 3.3-3.4). JSON is used here purely to make the fields concrete - the exact file syntax pool files must use is a Step 2 (technical specification) decision, not fixed by this example. Field meanings: id = unique Question ID; prompt = the question text; choices = exactly 2 (Yes/No or True/False) or exactly 4 entries; correctChoice = the exact text of the correct entry in choices; explanation = optional 'did you know' note shown at Reveal; difficulty = Easy/Medium/Hard (optional, defaults to Medium); tags = optional free-form labels.",
+  "questions": [
+    {
+      "id": "gk-001",
+      "prompt": "What is the capital of France?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography",
+        "Europe"
+      ],
+      "choices": [
+        "Paris",
+        "Berlin",
+        "Madrid",
+        "Rome"
+      ],
+      "correctChoice": "Paris",
+      "explanation": "Paris has been France's capital since the late 10th century."
+    },
+    {
+      "id": "gk-002",
+      "prompt": "True or False: The Sun rises in the east.",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Astronomy"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True",
+      "explanation": "This is caused by Earth's rotation on its axis."
+    },
+    {
+      "id": "gk-003",
+      "prompt": "Which planet is known as the Red Planet?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Space"
+      ],
+      "choices": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ],
+      "correctChoice": "Mars",
+      "explanation": "Mars appears red due to iron oxide (rust) covering its surface."
+    },
+    {
+      "id": "gk-004",
+      "prompt": "Is water made up of hydrogen and oxygen?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Chemistry"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes",
+      "explanation": "A water molecule is two hydrogen atoms bonded to one oxygen atom (H2O)."
+    },
+    {
+      "id": "gk-005",
+      "prompt": "Who wrote the play \"Romeo and Juliet\"?",
+      "difficulty": "Medium",
+      "tags": [
+        "History",
+        "Literature"
+      ],
+      "choices": [
+        "Charles Dickens",
+        "William Shakespeare",
+        "Jane Austen",
+        "Mark Twain"
+      ],
+      "correctChoice": "William Shakespeare",
+      "explanation": "It was written early in Shakespeare's career, in the mid-1590s."
+    },
+    {
+      "id": "gk-006",
+      "prompt": "What is the smallest prime number greater than 100?",
+      "difficulty": "Hard",
+      "tags": [
+        "Maths"
+      ],
+      "choices": [
+        "101",
+        "103",
+        "107",
+        "109"
+      ],
+      "correctChoice": "101",
+      "explanation": "101 is only divisible by 1 and itself."
+    },
+    {
+      "id": "gk-007",
+      "prompt": "How many continents are there on Earth?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctChoice": "7",
+      "explanation": "Africa, Antarctica, Asia, Australia, Europe, North America and South America."
+    },
+    {
+      "id": "gk-008",
+      "prompt": "True or False: The Great Wall of China is visible from space with the naked eye.",
+      "difficulty": "Medium",
+      "tags": [
+        "History",
+        "Myths"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "False",
+      "explanation": "This is a popular myth - it isn't distinctly visible without aid from low orbit."
+    },
+    {
+      "id": "gk-009",
+      "prompt": "What gas do plants primarily absorb from the atmosphere for photosynthesis?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Biology"
+      ],
+      "choices": [
+        "Oxygen",
+        "Carbon Dioxide",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "correctChoice": "Carbon Dioxide",
+      "explanation": "Plants convert carbon dioxide and water into glucose and oxygen using sunlight."
+    },
+    {
+      "id": "gk-010",
+      "prompt": "Which country hosted the 2016 Summer Olympics?",
+      "difficulty": "Medium",
+      "tags": [
+        "Sports",
+        "History"
+      ],
+      "choices": [
+        "China",
+        "United Kingdom",
+        "Brazil",
+        "Japan"
+      ],
+      "correctChoice": "Brazil",
+      "explanation": "The 2016 Games were held in Rio de Janeiro."
+    },
+    {
+      "id": "gk-011",
+      "prompt": "What is the chemical symbol for Tungsten?",
+      "difficulty": "Hard",
+      "tags": [
+        "Science",
+        "Chemistry"
+      ],
+      "choices": [
+        "Tu",
+        "Tn",
+        "W",
+        "Wo"
+      ],
+      "correctChoice": "W",
+      "explanation": "It comes from \"Wolfram\", the metal's German name."
+    },
+    {
+      "id": "gk-012",
+      "prompt": "True or False: A group of lions is called a \"pride\".",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-013",
+      "prompt": "Which ocean is the largest by surface area?",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Atlantic",
+        "Indian",
+        "Arctic",
+        "Pacific"
+      ],
+      "correctChoice": "Pacific",
+      "explanation": "The Pacific Ocean covers roughly a third of the Earth's surface."
+    },
+    {
+      "id": "gk-014",
+      "prompt": "What is the freezing point of water in Celsius?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science"
+      ],
+      "choices": [
+        "0",
+        "32",
+        "100",
+        "-10"
+      ],
+      "correctChoice": "0"
+    },
+    {
+      "id": "gk-015",
+      "prompt": "In which year did the Berlin Wall fall?",
+      "difficulty": "Hard",
+      "tags": [
+        "History"
+      ],
+      "choices": [
+        "1987",
+        "1989",
+        "1991",
+        "1993"
+      ],
+      "correctChoice": "1989",
+      "explanation": "The wall fell on 9 November 1989, reunifying East and West Berlin."
+    },
+    {
+      "id": "gk-016",
+      "prompt": "Does a leap year have 366 days?",
+      "difficulty": "Medium",
+      "tags": [
+        "General Knowledge",
+        "Calendar"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-017",
+      "prompt": "Which fruit is known as the \"king of fruits\" in parts of Southeast Asia?",
+      "difficulty": "Easy",
+      "tags": [
+        "Food"
+      ],
+      "choices": [
+        "Mango",
+        "Durian",
+        "Pineapple",
+        "Papaya"
+      ],
+      "correctChoice": "Durian",
+      "explanation": "Durian is famous (and notorious) for its strong smell."
+    },
+    {
+      "id": "gk-018",
+      "prompt": "What is the largest mammal in the world?",
+      "difficulty": "Medium",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "African Elephant",
+        "Blue Whale",
+        "Giraffe",
+        "Orca"
+      ],
+      "correctChoice": "Blue Whale",
+      "explanation": "Blue whales can grow up to around 30 metres long."
+    },
+    {
+      "id": "gk-019",
+      "prompt": "Who was the first woman to win a Nobel Prize?",
+      "difficulty": "Hard",
+      "tags": [
+        "History",
+        "Science"
+      ],
+      "choices": [
+        "Rosalind Franklin",
+        "Marie Curie",
+        "Dorothy Hodgkin",
+        "Ada Lovelace"
+      ],
+      "correctChoice": "Marie Curie",
+      "explanation": "Marie Curie won the Nobel Prize in Physics in 1903, and later Chemistry in 1911."
+    },
+    {
+      "id": "gk-020",
+      "prompt": "True or False: An octopus has eight arms.",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-021",
+      "prompt": "What is the largest ocean on Earth?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography",
+        "Oceans"
+      ],
+      "choices": [
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Pacific Ocean",
+        "Arctic Ocean"
+      ],
+      "correctChoice": "Pacific Ocean",
+      "explanation": "The Pacific Ocean covers more than 30% of the Earth's surface."
+    },
+    {
+      "id": "gk-022",
+      "prompt": "True or False: Antarctica is a desert.",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography",
+        "Science"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True",
+      "explanation": "Antarctica receives very little precipitation, making it the largest desert on Earth."
+    },
+    {
+      "id": "gk-023",
+      "prompt": "Which country is home to the kangaroo?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography",
+        "Animals"
+      ],
+      "choices": [
+        "South Africa",
+        "Australia",
+        "Brazil",
+        "India"
+      ],
+      "correctChoice": "Australia"
+    },
+    {
+      "id": "gk-024",
+      "prompt": "What is the chemical symbol for gold?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Chemistry"
+      ],
+      "choices": [
+        "Au",
+        "Ag",
+        "Gd",
+        "Go"
+      ],
+      "correctChoice": "Au",
+      "explanation": "Au comes from the Latin word 'aurum'."
+    },
+    {
+      "id": "gk-025",
+      "prompt": "Is the Great Wall of China visible from space with the naked eye?",
+      "difficulty": "Hard",
+      "tags": [
+        "Geography",
+        "Myths"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "No",
+      "explanation": "This is a common myth; the wall is too narrow to be seen without aid from orbit."
+    },
+    {
+      "id": "gk-026",
+      "prompt": "Who wrote the play 'Romeo and Juliet'?",
+      "difficulty": "Easy",
+      "tags": [
+        "Literature"
+      ],
+      "choices": [
+        "Charles Dickens",
+        "William Shakespeare",
+        "Jane Austen",
+        "Mark Twain"
+      ],
+      "correctChoice": "William Shakespeare"
+    },
+    {
+      "id": "gk-027",
+      "prompt": "True or False: Lightning never strikes the same place twice.",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Myths"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "False",
+      "explanation": "Lightning can and does strike the same location repeatedly, especially tall structures."
+    },
+    {
+      "id": "gk-028",
+      "prompt": "What is the smallest prime number?",
+      "difficulty": "Medium",
+      "tags": [
+        "Math"
+      ],
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "correctChoice": "2",
+      "explanation": "2 is the smallest and only even prime number."
+    },
+    {
+      "id": "gk-029",
+      "prompt": "Which planet has the most moons?",
+      "difficulty": "Hard",
+      "tags": [
+        "Science",
+        "Space"
+      ],
+      "choices": [
+        "Jupiter",
+        "Saturn",
+        "Uranus",
+        "Neptune"
+      ],
+      "correctChoice": "Saturn",
+      "explanation": "As of recent counts, Saturn has surpassed Jupiter in confirmed moons."
+    },
+    {
+      "id": "gk-030",
+      "prompt": "Is Mount Everest the tallest mountain in the world above sea level?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-031",
+      "prompt": "What is the capital of Japan?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography",
+        "Asia"
+      ],
+      "choices": [
+        "Seoul",
+        "Beijing",
+        "Tokyo",
+        "Bangkok"
+      ],
+      "correctChoice": "Tokyo"
+    },
+    {
+      "id": "gk-032",
+      "prompt": "True or False: Bats are blind.",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals",
+        "Myths"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "False",
+      "explanation": "Most bats can see; many also use echolocation to navigate in the dark."
+    },
+    {
+      "id": "gk-033",
+      "prompt": "Who painted the Mona Lisa?",
+      "difficulty": "Easy",
+      "tags": [
+        "Art",
+        "History"
+      ],
+      "choices": [
+        "Vincent van Gogh",
+        "Pablo Picasso",
+        "Leonardo da Vinci",
+        "Claude Monet"
+      ],
+      "correctChoice": "Leonardo da Vinci"
+    },
+    {
+      "id": "gk-034",
+      "prompt": "What is the hardest natural substance on Earth?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science"
+      ],
+      "choices": [
+        "Gold",
+        "Diamond",
+        "Quartz",
+        "Iron"
+      ],
+      "correctChoice": "Diamond"
+    },
+    {
+      "id": "gk-035",
+      "prompt": "True or False: The human body has 206 bones as an adult.",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Biology"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-036",
+      "prompt": "Which country gifted the Statue of Liberty to the United States?",
+      "difficulty": "Medium",
+      "tags": [
+        "History"
+      ],
+      "choices": [
+        "United Kingdom",
+        "France",
+        "Spain",
+        "Italy"
+      ],
+      "correctChoice": "France",
+      "explanation": "France gave the statue to the US in 1886 to celebrate their alliance."
+    },
+    {
+      "id": "gk-037",
+      "prompt": "Is a tomato botanically a fruit?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Food"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes",
+      "explanation": "Botanically, tomatoes are fruits because they develop from a flower and contain seeds."
+    },
+    {
+      "id": "gk-038",
+      "prompt": "What is the currency used in Japan?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography",
+        "Economics"
+      ],
+      "choices": [
+        "Won",
+        "Yuan",
+        "Yen",
+        "Ringgit"
+      ],
+      "correctChoice": "Yen"
+    },
+    {
+      "id": "gk-039",
+      "prompt": "True or False: Sharks are mammals.",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "False",
+      "explanation": "Sharks are fish, not mammals."
+    },
+    {
+      "id": "gk-040",
+      "prompt": "Who was the first person to walk on the Moon?",
+      "difficulty": "Easy",
+      "tags": [
+        "History",
+        "Space"
+      ],
+      "choices": [
+        "Buzz Aldrin",
+        "Neil Armstrong",
+        "Yuri Gagarin",
+        "John Glenn"
+      ],
+      "correctChoice": "Neil Armstrong"
+    },
+    {
+      "id": "gk-041",
+      "prompt": "What is the longest river in the world?",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Amazon River",
+        "Nile River",
+        "Yangtze River",
+        "Mississippi River"
+      ],
+      "correctChoice": "Nile River"
+    },
+    {
+      "id": "gk-042",
+      "prompt": "True or False: Venus is the hottest planet in our solar system.",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Space"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True",
+      "explanation": "Venus's thick atmosphere traps heat, making it hotter than Mercury despite being farther from the Sun."
+    },
+    {
+      "id": "gk-043",
+      "prompt": "Which instrument has 88 keys?",
+      "difficulty": "Easy",
+      "tags": [
+        "Music"
+      ],
+      "choices": [
+        "Guitar",
+        "Violin",
+        "Piano",
+        "Flute"
+      ],
+      "correctChoice": "Piano"
+    },
+    {
+      "id": "gk-044",
+      "prompt": "Is the Eiffel Tower located in Paris?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-045",
+      "prompt": "What gas do plants absorb from the atmosphere for photosynthesis?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Biology"
+      ],
+      "choices": [
+        "Oxygen",
+        "Carbon Dioxide",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "correctChoice": "Carbon Dioxide"
+    },
+    {
+      "id": "gk-046",
+      "prompt": "True or False: Goldfish have a memory span of only three seconds.",
+      "difficulty": "Medium",
+      "tags": [
+        "Nature",
+        "Myths"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "False",
+      "explanation": "Studies show goldfish can remember things for months."
+    },
+    {
+      "id": "gk-047",
+      "prompt": "Which country hosted the 2016 Summer Olympics?",
+      "difficulty": "Medium",
+      "tags": [
+        "Sports",
+        "History"
+      ],
+      "choices": [
+        "China",
+        "United Kingdom",
+        "Brazil",
+        "Japan"
+      ],
+      "correctChoice": "Brazil"
+    },
+    {
+      "id": "gk-048",
+      "prompt": "What is the tallest land animal?",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "Elephant",
+        "Giraffe",
+        "Ostrich",
+        "Camel"
+      ],
+      "correctChoice": "Giraffe"
+    },
+    {
+      "id": "gk-049",
+      "prompt": "True or False: The Amazon rainforest produces about 20% of the world's oxygen.",
+      "difficulty": "Hard",
+      "tags": [
+        "Nature",
+        "Science"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "False",
+      "explanation": "This is a popular but debated claim; most estimates put its net oxygen contribution near zero due to consumption by its own organisms."
+    },
+    {
+      "id": "gk-050",
+      "prompt": "Who developed the theory of relativity?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "History"
+      ],
+      "choices": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Niels Bohr",
+        "Galileo Galilei"
+      ],
+      "correctChoice": "Albert Einstein"
+    },
+    {
+      "id": "gk-051",
+      "prompt": "What is the capital city of Canada?",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Toronto",
+        "Vancouver",
+        "Ottawa",
+        "Montreal"
+      ],
+      "correctChoice": "Ottawa"
+    },
+    {
+      "id": "gk-052",
+      "prompt": "Is Pluto classified as a full planet today?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Space"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "No",
+      "explanation": "Pluto was reclassified as a dwarf planet by the IAU in 2006."
+    },
+    {
+      "id": "gk-053",
+      "prompt": "True or False: Honey never spoils.",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Food"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True",
+      "explanation": "Archaeologists have found edible honey thousands of years old due to its low moisture and acidity."
+    },
+    {
+      "id": "gk-054",
+      "prompt": "What is the largest desert in the world (by area)?",
+      "difficulty": "Hard",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Sahara Desert",
+        "Arabian Desert",
+        "Antarctic Desert",
+        "Gobi Desert"
+      ],
+      "correctChoice": "Antarctic Desert",
+      "explanation": "Deserts are defined by low precipitation, and Antarctica qualifies as the largest."
+    },
+    {
+      "id": "gk-055",
+      "prompt": "Which element has the atomic number 1?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Chemistry"
+      ],
+      "choices": [
+        "Helium",
+        "Hydrogen",
+        "Oxygen",
+        "Carbon"
+      ],
+      "correctChoice": "Hydrogen"
+    },
+    {
+      "id": "gk-056",
+      "prompt": "True or False: A group of crows is called a murder.",
+      "difficulty": "Medium",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-057",
+      "prompt": "What is the main language spoken in Brazil?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Spanish",
+        "Portuguese",
+        "French",
+        "Italian"
+      ],
+      "correctChoice": "Portuguese"
+    },
+    {
+      "id": "gk-058",
+      "prompt": "Does the moon produce its own light?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Space"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "No",
+      "explanation": "The Moon reflects sunlight; it doesn't generate its own light."
+    },
+    {
+      "id": "gk-059",
+      "prompt": "Who wrote the novel '1984'?",
+      "difficulty": "Medium",
+      "tags": [
+        "Literature"
+      ],
+      "choices": [
+        "Aldous Huxley",
+        "George Orwell",
+        "Ray Bradbury",
+        "H.G. Wells"
+      ],
+      "correctChoice": "George Orwell"
+    },
+    {
+      "id": "gk-060",
+      "prompt": "True or False: The Pacific Ocean is larger than all of Earth's landmass combined.",
+      "difficulty": "Hard",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-061",
+      "prompt": "What is the boiling point of water at sea level in Celsius?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science"
+      ],
+      "choices": [
+        "90",
+        "100",
+        "110",
+        "120"
+      ],
+      "correctChoice": "100"
+    },
+    {
+      "id": "gk-062",
+      "prompt": "Which country has the largest population in the world?",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "United States",
+        "India",
+        "China",
+        "Indonesia"
+      ],
+      "correctChoice": "India",
+      "explanation": "India surpassed China in total population in 2023."
+    },
+    {
+      "id": "gk-063",
+      "prompt": "True or False: Penguins can fly.",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "False",
+      "explanation": "Penguins are flightless birds, though they are excellent swimmers."
+    },
+    {
+      "id": "gk-064",
+      "prompt": "What is the study of earthquakes called?",
+      "difficulty": "Hard",
+      "tags": [
+        "Science"
+      ],
+      "choices": [
+        "Seismology",
+        "Geology",
+        "Meteorology",
+        "Volcanology"
+      ],
+      "correctChoice": "Seismology"
+    },
+    {
+      "id": "gk-065",
+      "prompt": "Is Australia both a country and a continent?",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-066",
+      "prompt": "Which sport is known as 'the beautiful game'?",
+      "difficulty": "Easy",
+      "tags": [
+        "Sports"
+      ],
+      "choices": [
+        "Basketball",
+        "Football (Soccer)",
+        "Tennis",
+        "Cricket"
+      ],
+      "correctChoice": "Football (Soccer)"
+    },
+    {
+      "id": "gk-067",
+      "prompt": "True or False: The human heart has four chambers.",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Biology"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-068",
+      "prompt": "Who is known as the father of modern computing?",
+      "difficulty": "Hard",
+      "tags": [
+        "History",
+        "Technology"
+      ],
+      "choices": [
+        "Alan Turing",
+        "Charles Babbage",
+        "Bill Gates",
+        "Steve Jobs"
+      ],
+      "correctChoice": "Charles Babbage",
+      "explanation": "Babbage designed the first mechanical computer concepts, though Turing's theoretical work is also foundational."
+    },
+    {
+      "id": "gk-069",
+      "prompt": "What is the freezing point of water in Fahrenheit?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science"
+      ],
+      "choices": [
+        "0",
+        "32",
+        "100",
+        "212"
+      ],
+      "correctChoice": "32"
+    },
+    {
+      "id": "gk-070",
+      "prompt": "True or False: Mount Kilimanjaro is located in Africa.",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-071",
+      "prompt": "Which planet is closest to the Sun?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Space"
+      ],
+      "choices": [
+        "Venus",
+        "Mercury",
+        "Earth",
+        "Mars"
+      ],
+      "correctChoice": "Mercury"
+    },
+    {
+      "id": "gk-072",
+      "prompt": "Does a compass needle point toward magnetic north?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-073",
+      "prompt": "What is the national sport of Japan?",
+      "difficulty": "Hard",
+      "tags": [
+        "Sports",
+        "Culture"
+      ],
+      "choices": [
+        "Judo",
+        "Sumo Wrestling",
+        "Karate",
+        "Baseball"
+      ],
+      "correctChoice": "Sumo Wrestling"
+    },
+    {
+      "id": "gk-074",
+      "prompt": "True or False: Spiders are insects.",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "False",
+      "explanation": "Spiders are arachnids, which have eight legs, unlike insects which have six."
+    },
+    {
+      "id": "gk-075",
+      "prompt": "Which country is known as the Land of the Rising Sun?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "China",
+        "South Korea",
+        "Japan",
+        "Thailand"
+      ],
+      "correctChoice": "Japan"
+    },
+    {
+      "id": "gk-076",
+      "prompt": "What do you call a baby kangaroo?",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "Cub",
+        "Joey",
+        "Calf",
+        "Kit"
+      ],
+      "correctChoice": "Joey"
+    },
+    {
+      "id": "gk-077",
+      "prompt": "True or False: The Great Barrier Reef is the largest living structure on Earth.",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography",
+        "Nature"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-078",
+      "prompt": "Who composed the Ninth Symphony while almost completely deaf?",
+      "difficulty": "Hard",
+      "tags": [
+        "Music",
+        "History"
+      ],
+      "choices": [
+        "Wolfgang Amadeus Mozart",
+        "Ludwig van Beethoven",
+        "Johann Sebastian Bach",
+        "Franz Schubert"
+      ],
+      "correctChoice": "Ludwig van Beethoven"
+    },
+    {
+      "id": "gk-079",
+      "prompt": "Is the speed of light faster than the speed of sound?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-080",
+      "prompt": "What is the largest mammal on land?",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "African Elephant",
+        "White Rhino",
+        "Hippopotamus",
+        "Giraffe"
+      ],
+      "correctChoice": "African Elephant"
+    },
+    {
+      "id": "gk-081",
+      "prompt": "True or False: Humans share about 50% of their DNA with bananas.",
+      "difficulty": "Hard",
+      "tags": [
+        "Science",
+        "Biology"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True",
+      "explanation": "This oft-cited statistic reflects shared basic cellular machinery across all living things."
+    },
+    {
+      "id": "gk-082",
+      "prompt": "Which ocean lies between Africa and Australia/Asia?",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Atlantic Ocean",
+        "Pacific Ocean",
+        "Indian Ocean",
+        "Arctic Ocean"
+      ],
+      "correctChoice": "Indian Ocean"
+    },
+    {
+      "id": "gk-083",
+      "prompt": "Does the Earth's axis tilt cause the seasons?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-084",
+      "prompt": "Which country invented paper?",
+      "difficulty": "Medium",
+      "tags": [
+        "History"
+      ],
+      "choices": [
+        "Egypt",
+        "China",
+        "Greece",
+        "India"
+      ],
+      "correctChoice": "China",
+      "explanation": "Paper-making is traditionally credited to Cai Lun in Han-dynasty China."
+    },
+    {
+      "id": "gk-085",
+      "prompt": "True or False: A cat's whiskers help it sense its surroundings in the dark.",
+      "difficulty": "Easy",
+      "tags": [
+        "Nature",
+        "Animals"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-086",
+      "prompt": "What is the smallest country in the world by area?",
+      "difficulty": "Hard",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Monaco",
+        "San Marino",
+        "Vatican City",
+        "Liechtenstein"
+      ],
+      "correctChoice": "Vatican City"
+    },
+    {
+      "id": "gk-087",
+      "prompt": "Is Jupiter the largest planet in our solar system?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Space"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-088",
+      "prompt": "Which metal is liquid at room temperature?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Chemistry"
+      ],
+      "choices": [
+        "Mercury",
+        "Lead",
+        "Tin",
+        "Zinc"
+      ],
+      "correctChoice": "Mercury"
+    },
+    {
+      "id": "gk-089",
+      "prompt": "True or False: The Sahara is the largest hot desert in the world.",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-090",
+      "prompt": "What is the tallest waterfall in the world?",
+      "difficulty": "Hard",
+      "tags": [
+        "Geography",
+        "Nature"
+      ],
+      "choices": [
+        "Niagara Falls",
+        "Angel Falls",
+        "Victoria Falls",
+        "Iguazu Falls"
+      ],
+      "correctChoice": "Angel Falls",
+      "explanation": "Angel Falls in Venezuela drops about 979 metres."
+    },
+    {
+      "id": "gk-091",
+      "prompt": "Does a solar eclipse occur when the Moon passes between the Sun and Earth?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Space"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-092",
+      "prompt": "Which explorer is credited with reaching the Americas in 1492?",
+      "difficulty": "Easy",
+      "tags": [
+        "History"
+      ],
+      "choices": [
+        "Ferdinand Magellan",
+        "Christopher Columbus",
+        "Vasco da Gama",
+        "Marco Polo"
+      ],
+      "correctChoice": "Christopher Columbus"
+    },
+    {
+      "id": "gk-093",
+      "prompt": "True or False: Owls can rotate their heads a full 360 degrees.",
+      "difficulty": "Medium",
+      "tags": [
+        "Nature",
+        "Animals",
+        "Myths"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "False",
+      "explanation": "Owls can rotate their heads about 270 degrees, not a full circle."
+    },
+    {
+      "id": "gk-094",
+      "prompt": "What is the largest internal organ in the human body?",
+      "difficulty": "Medium",
+      "tags": [
+        "Science",
+        "Biology"
+      ],
+      "choices": [
+        "Heart",
+        "Liver",
+        "Lungs",
+        "Kidney"
+      ],
+      "correctChoice": "Liver"
+    },
+    {
+      "id": "gk-095",
+      "prompt": "Is Russia the largest country in the world by land area?",
+      "difficulty": "Easy",
+      "tags": [
+        "Geography"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes"
+    },
+    {
+      "id": "gk-096",
+      "prompt": "Which ancient civilization built the pyramids of Giza?",
+      "difficulty": "Easy",
+      "tags": [
+        "History"
+      ],
+      "choices": [
+        "Romans",
+        "Greeks",
+        "Egyptians",
+        "Mayans"
+      ],
+      "correctChoice": "Egyptians"
+    },
+    {
+      "id": "gk-097",
+      "prompt": "True or False: Bamboo is the fastest-growing plant in the world.",
+      "difficulty": "Medium",
+      "tags": [
+        "Nature",
+        "Science"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    },
+    {
+      "id": "gk-098",
+      "prompt": "What is the largest coral reef system in the world?",
+      "difficulty": "Medium",
+      "tags": [
+        "Geography",
+        "Nature"
+      ],
+      "choices": [
+        "Belize Barrier Reef",
+        "Great Barrier Reef",
+        "Red Sea Coral Reef",
+        "Coral Triangle"
+      ],
+      "correctChoice": "Great Barrier Reef"
+    },
+    {
+      "id": "gk-099",
+      "prompt": "Does the Earth take approximately 365.25 days to orbit the Sun?",
+      "difficulty": "Easy",
+      "tags": [
+        "Science",
+        "Space"
+      ],
+      "choices": [
+        "Yes",
+        "No"
+      ],
+      "correctChoice": "Yes",
+      "explanation": "The extra quarter-day is why we add a leap day every four years."
+    },
+    {
+      "id": "gk-100",
+      "prompt": "True or False: The Wright brothers made the first powered airplane flight in 1903.",
+      "difficulty": "Medium",
+      "tags": [
+        "History",
+        "Technology"
+      ],
+      "choices": [
+        "True",
+        "False"
+      ],
+      "correctChoice": "True"
+    }
+  ]
+}
