@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "pool.schema.json",
+  "title": "FlashCards question pool",
+  "description": "Format of a question pool file in public/pools/. The pool id is the filename without .json (not poolName). Mirrors src/domain/types.ts and the runtime rules in src/domain/validation.ts. Rules JSON Schema cannot express: correctChoice must exactly equal one entry in choices; question ids must be unique within the pool.",
+  "type": "object",
+  "required": ["poolName", "questions"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "poolName": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S",
+      "description": "Display name of the pool."
+    },
+    "description": {
+      "type": "string",
+      "description": "Shown on the Pool Selection screen."
+    },
+    "category": {
+      "type": "string",
+      "description": "Grouping on the Pool Selection screen. Absent means 'General'."
+    },
+    "iconColorTag": { "type": "string" },
+    "author": { "type": "string" },
+    "version": { "type": ["string", "number"] },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/question" }
+    }
+  },
+  "additionalProperties": true,
+  "definitions": {
+    "question": {
+      "type": "object",
+      "required": ["id", "prompt", "choices", "correctChoice"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "Unique within this pool (may repeat across pools)."
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "choices": {
+          "type": "array",
+          "description": "Exactly 2 (e.g. True/False) or exactly 4 distinct, non-empty entries.",
+          "items": { "type": "string", "minLength": 1, "pattern": "\\S" },
+          "uniqueItems": true,
+          "oneOf": [
+            { "minItems": 2, "maxItems": 2 },
+            { "minItems": 4, "maxItems": 4 }
+          ]
+        },
+        "correctChoice": {
+          "type": "string",
+          "description": "Must exactly match one entry in choices."
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Optional note shown at Reveal."
+        },
+        "difficulty": {
+          "enum": ["Easy", "Medium", "Hard"],
+          "description": "Absent means 'Medium'."
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Reserved for future filtering."
+        },
+        "imageRef": {
+          "type": "string",
+          "description": "Reserved for future image support; not rendered in v1."
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

@@ -50,7 +50,7 @@ npm run preview
 
 ## Adding your own question pools
 
-1. Drop a new `.json` file into `public/pools/` following the schema below (see `public/pools/general-knowledge.json` for a complete example).
+1. Drop a new `.json` file into `public/pools/` following the schema below (see `public/pools/general-knowledge.json` for a complete example). A formal JSON Schema is in `schemas/pool.schema.json` (add `"$schema": "../../schemas/pool.schema.json"` to a pool file for editor validation).
 2. Restart `npm run dev` (or rebuild) so the manifest picks up the new file.
 
 Minimal pool file shape:
