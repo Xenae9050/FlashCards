@@ -3,7 +3,13 @@ import { useAppState } from "../../state/AppStateContext";
 import { computeBucketKey } from "../../domain/bucketKey";
 import type { Mode, Configuration } from "../../domain/types";
 import { Button } from "../ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "../ui/card";
 
 const MODES: { mode: Mode; title: string; description: string }[] = [
   {

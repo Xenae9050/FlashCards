@@ -65,7 +65,11 @@ export function HighScoresScreen() {
           ))}
         </TabsList>
         {MODES.map((mode) => (
-          <TabsContent key={mode} value={mode} className="mt-4 flex flex-col gap-4">
+          <TabsContent
+            key={mode}
+            value={mode}
+            className="mt-4 flex flex-col gap-4"
+          >
             {byMode[mode].length === 0 && (
               <p className="text-sm text-muted-foreground">
                 No high scores yet.

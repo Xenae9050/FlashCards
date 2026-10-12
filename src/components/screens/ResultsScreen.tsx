@@ -52,7 +52,10 @@ function TestResults() {
           </div>
           <div className="text-right">
             <p className="text-sm text-muted-foreground">Grade</p>
-            <p className="text-5xl font-bold" aria-label={`Grade ${report.grade}`}>
+            <p
+              className="text-5xl font-bold"
+              aria-label={`Grade ${report.grade}`}
+            >
               {report.grade}
             </p>
           </div>
@@ -76,8 +79,8 @@ function TestResults() {
                   <ul className="list-disc pl-5">
                     {weakPools.map((e) => (
                       <li key={e.label}>
-                        {poolNames.get(e.label) ?? e.label}: {e.correct}/{e.total} (
-                        {pct(e)}%)
+                        {poolNames.get(e.label) ?? e.label}: {e.correct}/
+                        {e.total} ({pct(e)}%)
                       </li>
                     ))}
                   </ul>
@@ -221,9 +224,7 @@ export function ResultsScreen() {
               <span className="flex items-center gap-1.5 text-muted-foreground">
                 <Coins className="size-4" /> Coins earned this run
               </span>
-              <span className="font-medium">
-                {summary.coinsEarnedThisRun}
-              </span>
+              <span className="font-medium">{summary.coinsEarnedThisRun}</span>
             </li>
             {summary.milestoneBonus > 0 && (
               <li className="flex items-center justify-between">

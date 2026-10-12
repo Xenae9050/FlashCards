@@ -28,7 +28,8 @@ export function ReadyScreen() {
             </li>
             <li className="flex justify-between">
               <span className="text-muted-foreground">Setting</span>
-              <span className="font-medium">{config.modeSettingSeconds}
+              <span className="font-medium">
+                {config.modeSettingSeconds}
                 {mode === "test" ? " questions" : "s"}
               </span>
             </li>

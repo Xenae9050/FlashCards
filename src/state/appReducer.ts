@@ -530,19 +530,29 @@ export function appReducer(state: AppState, action: Action): AppState {
 
     case "PAUSE":
       if (!state.run || state.run.preCountdownActive) return state;
-      return { ...state, run: { ...state.run, isPaused: true, pausedAt: performance.now() } };
+      return {
+        ...state,
+        run: { ...state.run, isPaused: true, pausedAt: performance.now() },
+      };
     case "RESUME": {
       if (!state.run) return state;
       const run = state.run;
-      const pauseDurationMs = run.pausedAt !== null ? performance.now() - run.pausedAt : 0;
+      const pauseDurationMs =
+        run.pausedAt !== null ? performance.now() - run.pausedAt : 0;
       return {
         ...state,
         run: {
           ...run,
           isPaused: false,
           pausedAt: null,
-          questionShownAt: run.questionShownAt !== null ? run.questionShownAt + pauseDurationMs : null,
-          revealShownAt: run.revealShownAt !== null ? run.revealShownAt + pauseDurationMs : null,
+          questionShownAt:
+            run.questionShownAt !== null
+              ? run.questionShownAt + pauseDurationMs
+              : null,
+          revealShownAt:
+            run.revealShownAt !== null
+              ? run.revealShownAt + pauseDurationMs
+              : null,
         },
       };
     }
@@ -673,13 +683,19 @@ export function appReducer(state: AppState, action: Action): AppState {
       if (!state.saveData) return state;
       const catalogueItem = SHOP_CATALOGUE.find((i) => i.id === action.itemId);
       if (!catalogueItem) return state;
-      const alreadyOwned = state.saveData.shop.ownedItemIds.includes(action.itemId);
-      if (alreadyOwned || state.saveData.wallet.coins < catalogueItem.costCoins) return state;
+      const alreadyOwned = state.saveData.shop.ownedItemIds.includes(
+        action.itemId,
+      );
+      if (alreadyOwned || state.saveData.wallet.coins < catalogueItem.costCoins)
+        return state;
       return {
         ...state,
         saveData: {
           ...state.saveData,
-          wallet: { ...state.saveData.wallet, coins: state.saveData.wallet.coins - catalogueItem.costCoins },
+          wallet: {
+            ...state.saveData.wallet,
+            coins: state.saveData.wallet.coins - catalogueItem.costCoins,
+          },
           shop: {
             ...state.saveData.shop,
             ownedItemIds: [...state.saveData.shop.ownedItemIds, action.itemId],
@@ -690,14 +706,21 @@ export function appReducer(state: AppState, action: Action): AppState {
     case "SHOP_EQUIP": {
       if (!state.saveData) return state;
       const catalogueItem = SHOP_CATALOGUE.find((i) => i.id === action.itemId);
-      if (!catalogueItem || !state.saveData.shop.ownedItemIds.includes(action.itemId)) return state;
+      if (
+        !catalogueItem ||
+        !state.saveData.shop.ownedItemIds.includes(action.itemId)
+      )
+        return state;
       return {
         ...state,
         saveData: {
           ...state.saveData,
           shop: {
             ...state.saveData.shop,
-            equipped: { ...state.saveData.shop.equipped, [catalogueItem.category]: action.itemId },
+            equipped: {
+              ...state.saveData.shop.equipped,
+              [catalogueItem.category]: action.itemId,
+            },
           },
         },
       };

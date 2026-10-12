@@ -31,7 +31,8 @@ function TimeBar({
   remainingMs: number;
   totalMs: number;
 }) {
-  const pct = totalMs > 0 ? Math.max(0, Math.min(100, (remainingMs / totalMs) * 100)) : 0;
+  const pct =
+    totalMs > 0 ? Math.max(0, Math.min(100, (remainingMs / totalMs) * 100)) : 0;
   const critical = pct <= 25;
   return (
     <div className="flex min-w-[7rem] flex-1 items-center gap-2 sm:flex-none sm:basis-40">

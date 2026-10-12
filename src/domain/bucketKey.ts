@@ -24,8 +24,8 @@ export function formatConfigurationLabel(
     config.mode === "race"
       ? `${Math.round(config.modeSettingSeconds / 60)} min`
       : config.mode === "test"
-        ? `${config.modeSettingSeconds} questions`
-        : `${config.modeSettingSeconds}s`;
+      ? `${config.modeSettingSeconds} questions`
+      : `${config.modeSettingSeconds}s`;
   const pools = config.selectedPoolIds
     .map((id) => poolNamesById[id] ?? id)
     .join(" + ");

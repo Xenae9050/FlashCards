@@ -48,7 +48,9 @@ function ActiveQuestion({
   const hasPerQuestionTimer = mode === "sudden-death" || mode === "quickdraw";
   const questionDurationMs = Math.max(
     0,
-    (run.questionShownAt ?? performance.now()) + run.config.modeSettingSeconds * 1000 - performance.now(),
+    (run.questionShownAt ?? performance.now()) +
+      run.config.modeSettingSeconds * 1000 -
+      performance.now(),
   );
   const onQuestionExpire = () => {
     if (!run.revealVisible) dispatch({ type: "QUESTION_TIMER_EXPIRED" });
@@ -62,15 +64,25 @@ function ActiveQuestion({
   // Min-view-time and auto-advance timers, started the instant Reveal appears. Delays are
   // computed relative to revealShownAt (also shifted by RESUME) for the same reason as above.
   useEffect(() => {
-    if (!run.revealVisible || run.isPaused || run.revealShownAt === null) return;
+    if (!run.revealVisible || run.isPaused || run.revealShownAt === null)
+      return;
     const elapsedSinceReveal = performance.now() - run.revealShownAt;
-    const minViewDelay = Math.max(0, MIN_VIEW_TIME_MS[mode] - elapsedSinceReveal);
-    const autoAdvanceDelay = Math.max(0, AUTO_ADVANCE_DELAY_MS[mode] - elapsedSinceReveal);
+    const minViewDelay = Math.max(
+      0,
+      MIN_VIEW_TIME_MS[mode] - elapsedSinceReveal,
+    );
+    const autoAdvanceDelay = Math.max(
+      0,
+      AUTO_ADVANCE_DELAY_MS[mode] - elapsedSinceReveal,
+    );
     const minViewTimer = setTimeout(
       () => dispatch({ type: "MIN_VIEW_TIME_ELAPSED" }),
       minViewDelay,
     );
-    const autoAdvanceTimer = setTimeout(() => dispatch({ type: "CONTINUE" }), autoAdvanceDelay);
+    const autoAdvanceTimer = setTimeout(
+      () => dispatch({ type: "CONTINUE" }),
+      autoAdvanceDelay,
+    );
     return () => {
       clearTimeout(minViewTimer);
       clearTimeout(autoAdvanceTimer);
@@ -83,8 +95,8 @@ function ActiveQuestion({
   const barRemainingMs = isRace
     ? raceRemainingMs
     : hasPerQuestionTimer && !run.revealVisible
-      ? questionRemainingMs
-      : null;
+    ? questionRemainingMs
+    : null;
 
   return (
     <>
@@ -118,7 +130,10 @@ function ActiveQuestion({
           }
         />
         {mode === "test" && (
-          <Button className="mt-4" onClick={() => dispatch({ type: "TEST_NEXT" })}>
+          <Button
+            className="mt-4"
+            onClick={() => dispatch({ type: "TEST_NEXT" })}
+          >
             {run.deckPointer >= run.deck.length ? "Finish" : "Next"}
           </Button>
         )}

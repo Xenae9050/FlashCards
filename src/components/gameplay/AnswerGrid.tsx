@@ -56,11 +56,17 @@ export function AnswerGrid({
       : "grid grid-cols-1 gap-3 sm:grid-cols-2";
 
   return (
-    <div className={cn("mt-4", gridClass)} role="group" aria-label="Answer choices">
+    <div
+      className={cn("mt-4", gridClass)}
+      role="group"
+      aria-label="Answer choices"
+    >
       {choices.map((choice, i) => {
         const isCorrect = revealVisible && choice === correctChoice;
         const isWrongPick =
-          revealVisible && choice === selectedChoice && choice !== correctChoice;
+          revealVisible &&
+          choice === selectedChoice &&
+          choice !== correctChoice;
         return (
           <Button
             key={choice}
@@ -83,8 +89,12 @@ export function AnswerGrid({
               {LETTER_LABELS[i]}
             </span>
             <span className="answer-text flex-1">{choice}</span>
-            {isCorrect && <Check className="size-5 shrink-0" aria-hidden="true" />}
-            {isWrongPick && <X className="size-5 shrink-0" aria-hidden="true" />}
+            {isCorrect && (
+              <Check className="size-5 shrink-0" aria-hidden="true" />
+            )}
+            {isWrongPick && (
+              <X className="size-5 shrink-0" aria-hidden="true" />
+            )}
           </Button>
         );
       })}

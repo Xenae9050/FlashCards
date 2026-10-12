@@ -54,7 +54,11 @@ export function ModeConfigurationScreen() {
 
   return (
     <main className="screen mode-configuration-screen mx-auto max-w-2xl p-6">
-      <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold capitalize">
+      <h1
+        ref={headingRef}
+        tabIndex={-1}
+        className="text-2xl font-bold capitalize"
+      >
         Configure {mode.replace("-", " ")}
       </h1>
 
@@ -77,7 +81,9 @@ export function ModeConfigurationScreen() {
 
       <div className="mt-4 flex flex-col gap-1.5">
         <Label htmlFor="custom-seconds">
-          {mode === "test" ? "Custom (number of questions)" : "Custom (seconds)"}
+          {mode === "test"
+            ? "Custom (number of questions)"
+            : "Custom (seconds)"}
         </Label>
         <Input
           id="custom-seconds"
