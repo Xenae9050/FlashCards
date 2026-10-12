@@ -22,6 +22,13 @@ export const MODE_SETTING_RANGES: Record<
     presetsSeconds: [3, 5, 7, 10],
     defaultSeconds: 5,
   }, // DB §5.4
+  // Test mode: the "seconds" setting holds the NUMBER OF QUESTIONS.
+  test: {
+    min: 5,
+    max: 100,
+    presetsSeconds: [10, 20, 30, 50],
+    defaultSeconds: 20,
+  },
 };
 
 export const QUICKDRAW_LIVES = 3; // DB §5.4 — fixed, not configurable
@@ -53,11 +60,13 @@ export const MIN_VIEW_TIME_MS: Record<Mode, number> = {
   "sudden-death": 1500,
   race: 500,
   quickdraw: 1500,
+  test: 0,
 };
 export const AUTO_ADVANCE_DELAY_MS: Record<Mode, number> = {
   "sudden-death": 4000,
   race: 1000,
   quickdraw: 4000,
+  test: 0,
 };
 // Invariant that must always hold: AUTO_ADVANCE_DELAY_MS[mode] >= MIN_VIEW_TIME_MS[mode]
 

@@ -12,6 +12,7 @@ const MODE_LABEL: Record<Mode, string> = {
   "sudden-death": "Sudden Death",
   race: "Race",
   quickdraw: "Quickdraw",
+  test: "Test",
 };
 
 export function HighScoresScreen() {
@@ -30,6 +31,7 @@ export function HighScoresScreen() {
       "sudden-death": [],
       race: [],
       quickdraw: [],
+      test: [],
     };
     for (const [key, entries] of Object.entries(buckets)) {
       const mode = key.split("|")[0] as Mode;

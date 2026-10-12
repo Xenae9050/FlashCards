@@ -18,6 +18,8 @@ function previewSentence(mode: Mode, seconds: number): string {
     }
     case "quickdraw":
       return `You'll have ${seconds} seconds per question, with ${QUICKDRAW_LIVES} lives.`;
+    case "test":
+      return `You'll answer ${seconds} questions with no time limit. Wrong answers won't stop you.`;
   }
 }
 
@@ -67,13 +69,16 @@ export function ModeConfigurationScreen() {
               dispatch({ type: "SET_MODE_SETTING", seconds: preset })
             }
           >
-            {preset}s
+            {preset}
+            {mode === "test" ? "" : "s"}
           </Button>
         ))}
       </div>
 
       <div className="mt-4 flex flex-col gap-1.5">
-        <Label htmlFor="custom-seconds">Custom (seconds)</Label>
+        <Label htmlFor="custom-seconds">
+          {mode === "test" ? "Custom (number of questions)" : "Custom (seconds)"}
+        </Label>
         <Input
           id="custom-seconds"
           type="number"

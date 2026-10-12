@@ -23,6 +23,12 @@ const MODES: { mode: Mode; title: string; description: string }[] = [
     title: "Quickdraw",
     description: "3 lives, a short timer per question — quick thinking wins.",
   },
+  {
+    mode: "test",
+    title: "Test",
+    description:
+      "A set number of questions with no timer. Answer them all, then get a grade and a review.",
+  },
 ];
 
 export function ModeSelectionScreen() {
@@ -32,6 +38,7 @@ export function ModeSelectionScreen() {
   const buckets = state.saveData?.highScores.buckets ?? {};
 
   function bestFor(mode: Mode): string {
+    if (mode === "test") return "Graded A+ to F";
     const last = lastConfigurations?.[mode];
     if (!last) return "No plays yet";
     const key = computeBucketKey(last as Configuration);

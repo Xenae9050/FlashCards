@@ -5,6 +5,7 @@ import { TopStatusBar } from "../gameplay/TopStatusBar";
 import { AnswerGrid } from "../gameplay/AnswerGrid";
 import { RevealPanel } from "../gameplay/RevealPanel";
 import { PauseOverlay } from "../gameplay/PauseOverlay";
+import { Button } from "../ui/button";
 import {
   READY_COUNTDOWN_MS,
   MIN_VIEW_TIME_MS,
@@ -101,6 +102,8 @@ function ActiveQuestion({
           (mode === "sudden-death" || mode === "quickdraw") &&
           run.correctCount >= 1
         }
+        questionNumber={run.deckPointer}
+        questionTotal={run.deck.length}
       />
       <div className="my-4 rounded-lg border border-border bg-card p-6 text-card-foreground shadow-sm">
         <p className="text-xl font-semibold">{question.prompt}</p>
@@ -114,6 +117,11 @@ function ActiveQuestion({
             dispatch({ type: "SELECT_ANSWER", choiceText: choice })
           }
         />
+        {mode === "test" && (
+          <Button className="mt-4" onClick={() => dispatch({ type: "TEST_NEXT" })}>
+            {run.deckPointer >= run.deck.length ? "Finish" : "Next"}
+          </Button>
+        )}
       </div>
       {run.revealVisible && (
         <RevealPanel

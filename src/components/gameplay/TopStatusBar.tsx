@@ -15,6 +15,8 @@ interface Props {
   onPause: () => void;
   onStopAndSave: () => void;
   showStopAndSave: boolean;
+  questionNumber?: number;
+  questionTotal?: number;
 }
 
 /**
@@ -54,6 +56,8 @@ export function TopStatusBar({
   onPause,
   onStopAndSave,
   showStopAndSave,
+  questionNumber,
+  questionTotal,
 }: Props) {
   const showBar = remainingMs !== null && totalMs !== null;
   return (
@@ -63,6 +67,11 @@ export function TopStatusBar({
           <Badge variant="secondary">Streak: {streak}</Badge>
           <Badge variant="secondary">Points: {pointsTotal}</Badge>
         </>
+      )}
+      {mode === "test" && (
+        <Badge variant="secondary">
+          Question {questionNumber} / {questionTotal}
+        </Badge>
       )}
       {mode === "race" && (
         <>

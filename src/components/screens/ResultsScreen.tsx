@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Coins, Award, Trophy } from "lucide-react";
 import { useFocusOnMount } from "../../hooks/useFocusOnMount";
 import { useAppState } from "../../state/AppStateContext";
@@ -13,7 +13,163 @@ const END_REASON_LABEL: Record<string, string> = {
   "pool-exhausted": "You've answered every available question — nicely done!",
   "stop-and-save": "You banked your run.",
   quit: "Run abandoned.",
+  "test-complete": "Test complete.",
 };
+
+function pct(e: { correct: number; total: number }) {
+  return Math.round((e.correct / e.total) * 100);
+}
+
+function TestResults() {
+  const { state, dispatch } = useAppState();
+  const headingRef = useFocusOnMount<HTMLHeadingElement>();
+  const [showIncorrect, setShowIncorrect] = useState(false);
+  const report = state.lastResultSummary!.testReport!;
+  const poolNames = new Map(
+    (state.poolCatalog?.pools ?? []).map((p) => [p.id, p.poolName]),
+  );
+
+  const weak = (entries: typeof report.byPool) =>
+    entries.filter((e) => e.correct < e.total && pct(e) < 80).slice(0, 5);
+  const weakPools = weak(report.byPool);
+  const weakTags = weak(report.byTag);
+  const weakDifficulties = weak(report.byDifficulty);
+  const nothingToImprove =
+    weakPools.length + weakTags.length + weakDifficulties.length === 0;
+
+  return (
+    <main className="screen results-screen mx-auto max-w-2xl p-6">
+      <h1 ref={headingRef} tabIndex={-1} className="text-2xl font-bold">
+        Test Results
+      </h1>
+      <Card className="mt-4">
+        <CardContent className="flex items-center justify-between">
+          <div>
+            <p className="text-sm text-muted-foreground">Total score</p>
+            <p className="text-2xl font-semibold">
+              {report.correct} / {report.total} ({report.percent}%)
+            </p>
+          </div>
+          <div className="text-right">
+            <p className="text-sm text-muted-foreground">Grade</p>
+            <p className="text-5xl font-bold" aria-label={`Grade ${report.grade}`}>
+              {report.grade}
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="mt-4">
+        <CardContent>
+          <h2 className="font-semibold">What to improve</h2>
+          {report.incorrect.length === 0 || nothingToImprove ? (
+            <p className="mt-2 text-sm text-muted-foreground">
+              {report.incorrect.length === 0
+                ? "Perfect score \u2014 nothing to improve!"
+                : "No single topic stands out; review the questions you missed."}
+            </p>
+          ) : (
+            <div className="mt-2 flex flex-col gap-3 text-sm">
+              {weakPools.length > 0 && (
+                <div>
+                  <p className="text-muted-foreground">Pools</p>
+                  <ul className="list-disc pl-5">
+                    {weakPools.map((e) => (
+                      <li key={e.label}>
+                        {poolNames.get(e.label) ?? e.label}: {e.correct}/{e.total} (
+                        {pct(e)}%)
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {weakTags.length > 0 && (
+                <div>
+                  <p className="text-muted-foreground">Topics</p>
+                  <ul className="list-disc pl-5">
+                    {weakTags.map((e) => (
+                      <li key={e.label}>
+                        {e.label}: {e.correct}/{e.total} ({pct(e)}%)
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {weakDifficulties.length > 0 && (
+                <div>
+                  <p className="text-muted-foreground">Difficulty</p>
+                  <ul className="list-disc pl-5">
+                    {weakDifficulties.map((e) => (
+                      <li key={e.label}>
+                        {e.label} questions: {e.correct}/{e.total} ({pct(e)}%)
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {report.incorrect.length > 0 && (
+        <Button
+          variant="outline"
+          className="mt-4"
+          aria-expanded={showIncorrect}
+          onClick={() => setShowIncorrect((v) => !v)}
+        >
+          {showIncorrect ? "Hide" : "Show"} incorrect questions (
+          {report.incorrect.length})
+        </Button>
+      )}
+      {showIncorrect && (
+        <ol className="mt-4 flex flex-col gap-3">
+          {report.incorrect.map((a, i) => (
+            <li key={`${a.poolId}-${a.question.id}`}>
+              <Card>
+                <CardContent className="flex flex-col gap-1 text-sm">
+                  <p className="font-medium">
+                    {i + 1}. {a.question.prompt}
+                  </p>
+                  <p className="text-destructive">
+                    Your answer: {a.selected ?? "(no answer)"}
+                  </p>
+                  <p className="text-success">
+                    Correct answer: {a.question.correctChoice}
+                  </p>
+                  {a.question.explanation && (
+                    <p className="text-muted-foreground">
+                      {a.question.explanation}
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+            </li>
+          ))}
+        </ol>
+      )}
+
+      <div className="screen-actions mt-6 flex flex-wrap gap-2">
+        <Button onClick={() => dispatch({ type: "PLAY_AGAIN" })}>
+          Retake Test
+        </Button>
+        <Button
+          variant="outline"
+          onClick={() => dispatch({ type: "ADJUST_AND_RETRY" })}
+        >
+          Adjust &amp; Retry
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={() => dispatch({ type: "NAVIGATE", screen: "main-menu" })}
+        >
+          Main Menu
+        </Button>
+      </div>
+    </main>
+  );
+}
 
 export function ResultsScreen() {
   const { state, dispatch } = useAppState();
@@ -37,6 +193,8 @@ export function ResultsScreen() {
       </main>
     );
   }
+
+  if (summary.testReport) return <TestResults />;
 
   return (
     <main className="screen results-screen mx-auto max-w-md p-6">

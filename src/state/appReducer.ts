@@ -7,12 +7,14 @@ import type {
   HighScoreEntry,
   Pool,
   PoolValidationError,
+  TestAnswer,
 } from "../domain/types";
 import type { SaveData } from "../persistence/saveFiles";
 import type { Action } from "./actions";
 import { buildDeck, fisherYatesShuffle } from "../domain/deck";
 import { computePoints, computeCoinsForAnswer } from "../domain/scoring";
 import { computeBucketKey, insertHighScoreEntry } from "../domain/bucketKey";
+import { buildTestReport } from "../domain/testReport";
 import {
   MODE_SETTING_RANGES,
   QUICKDRAW_LIVES,
@@ -48,6 +50,7 @@ export interface RunState {
   attemptedCount: number;
   runEndReason: RunEndReason | null;
   resultsProcessed: boolean;
+  testAnswers: TestAnswer[]; // Test mode only: answers recorded so far
 }
 
 export interface AppState {
@@ -82,7 +85,11 @@ function buildFreshRun(config: Configuration, pools: Pool[]): RunState {
   const selectedPools = pools.filter((p) =>
     config.selectedPoolIds.includes(p.id),
   );
-  const deck = buildDeck(selectedPools, config.difficultyFilter);
+  const fullDeck = buildDeck(selectedPools, config.difficultyFilter);
+  const deck =
+    config.mode === "test"
+      ? fullDeck.slice(0, config.modeSettingSeconds)
+      : fullDeck;
   return {
     runId: Date.now() + Math.random(),
     config,
@@ -108,6 +115,7 @@ function buildFreshRun(config: Configuration, pools: Pool[]): RunState {
     attemptedCount: 0,
     runEndReason: null,
     resultsProcessed: false,
+    testAnswers: [],
   };
 }
 
@@ -182,6 +190,11 @@ function handleAnswer(state: AppState, choiceText: string | null): AppState {
   const run = state.run;
   if (!run || run.revealVisible || !run.currentDeckQuestion) return state;
 
+  if (run.config.mode === "test") {
+    // No feedback during a test: just remember the (changeable) selection until TEST_NEXT.
+    return { ...state, run: { ...run, selectedAnswerText: choiceText } };
+  }
+
   const question = run.currentDeckQuestion.question;
   const wasCorrect =
     choiceText !== null && choiceText === question.correctChoice;
@@ -247,6 +260,26 @@ function handleAnswer(state: AppState, choiceText: string | null): AppState {
 function processResults(state: AppState): AppState {
   if (!state.run || !state.saveData || state.run.resultsProcessed) return state;
   const run = state.run;
+  if (run.config.mode === "test") {
+    const report = buildTestReport(run.testAnswers);
+    return {
+      ...state,
+      run: { ...run, resultsProcessed: true },
+      lastResultSummary: {
+        config: run.config,
+        runEndReason: run.runEndReason ?? "test-complete",
+        correctCount: report.correct,
+        attemptedCount: report.total,
+        pointsTotal: 0,
+        coinsEarnedThisRun: 0,
+        milestoneBonus: 0,
+        totalCoinsThisRun: 0,
+        rank: null,
+        bucketKey: computeBucketKey(run.config),
+        testReport: report,
+      },
+    };
+  }
   const bucketKey = computeBucketKey(run.config);
   const candidate: HighScoreEntry = {
     points: run.pointsTotal,
@@ -463,6 +496,29 @@ export function appReducer(state: AppState, action: Action): AppState {
     case "CONTINUE":
       return handleContinue(state);
 
+    case "TEST_NEXT": {
+      const run = state.run;
+      if (!run || run.config.mode !== "test" || !run.currentDeckQuestion)
+        return state;
+      const testAnswers = [
+        ...run.testAnswers,
+        {
+          poolId: run.currentDeckQuestion.poolId,
+          question: run.currentDeckQuestion.question,
+          selected: run.selectedAnswerText,
+        },
+      ];
+      const updated = { ...run, testAnswers };
+      if (run.deckPointer >= run.deck.length) {
+        return processResults({
+          ...state,
+          run: { ...updated, runEndReason: "test-complete" },
+          screen: "results",
+        });
+      }
+      return { ...state, run: drawNextQuestion(updated) };
+    }
+
     case "STOP_AND_SAVE": {
       if (!state.run || state.run.correctCount < 1) return state;
       return processResults({
@@ -607,6 +663,7 @@ export function appReducer(state: AppState, action: Action): AppState {
             "sudden-death": null,
             race: null,
             quickdraw: null,
+            test: null,
           },
         },
       };

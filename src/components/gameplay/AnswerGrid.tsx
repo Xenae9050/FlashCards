@@ -74,6 +74,9 @@ export function AnswerGrid({
                 "border-success bg-success/15 text-success-foreground hover:bg-success/15",
               isWrongPick &&
                 "border-destructive bg-destructive/15 text-destructive hover:bg-destructive/15",
+              !revealVisible &&
+                choice === selectedChoice &&
+                "border-primary bg-primary/10",
             )}
           >
             <span className="answer-badge flex size-7 shrink-0 items-center justify-center rounded-full border border-current text-sm font-bold">

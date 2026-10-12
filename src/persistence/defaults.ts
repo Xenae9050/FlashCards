@@ -45,4 +45,5 @@ export const DEFAULT_LAST_CONFIGURATIONS: Record<Mode, Configuration | null> = {
   "sudden-death": null,
   race: null,
   quickdraw: null,
+  test: null,
 };

@@ -24,6 +24,7 @@ export type Action =
   | { type: "OVERALL_TIMER_EXPIRED" }
   | { type: "MIN_VIEW_TIME_ELAPSED" }
   | { type: "CONTINUE" }
+  | { type: "TEST_NEXT" }
   | { type: "STOP_AND_SAVE" }
   | { type: "PAUSE" }
   | { type: "RESUME" }

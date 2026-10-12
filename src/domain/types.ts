@@ -1,6 +1,6 @@
 export type Difficulty = "Easy" | "Medium" | "Hard";
 
-export type Mode = "sudden-death" | "race" | "quickdraw";
+export type Mode = "sudden-death" | "race" | "quickdraw" | "test";
 
 /** One question as loaded from a pool file, plus its derived pool id. */
 export interface Question {
@@ -50,6 +50,7 @@ export type RunEndReason =
   | "lives-depleted" // Quickdraw: third life lost
   | "clock-expired" // Race: overall timer reached zero
   | "pool-exhausted" // any mode: deck ran out
+  | "test-complete" // Test: all questions answered
   | "stop-and-save" // Sudden Death / Quickdraw: voluntary bank
   | "quit"; // any mode: Quit to Main Menu from Pause
 
@@ -114,7 +115,34 @@ export interface HighScoresFile {
   buckets: Record<string, HighScoreEntry[]>;
 }
 
+export type Grade = "A+" | "A" | "B" | "C" | "D" | "E" | "F";
+
+/** One answered question in a Test run. `selected` is null if the player skipped it. */
+export interface TestAnswer {
+  poolId: string;
+  question: Question;
+  selected: string | null;
+}
+
+export interface TestBreakdownEntry {
+  label: string; // pool id, tag, or difficulty
+  correct: number;
+  total: number;
+}
+
+export interface TestReport {
+  total: number;
+  correct: number;
+  percent: number; // 0-100, rounded
+  grade: Grade;
+  incorrect: TestAnswer[];
+  byPool: TestBreakdownEntry[];
+  byTag: TestBreakdownEntry[];
+  byDifficulty: TestBreakdownEntry[];
+}
+
 export interface ResultSummary {
+  testReport?: TestReport;
   config: Configuration;
   runEndReason: RunEndReason;
   correctCount: number;

@@ -18,11 +18,14 @@ export function formatConfigurationLabel(
     "sudden-death": "Sudden Death",
     race: "Race",
     quickdraw: "Quickdraw",
+    test: "Test",
   };
   const settingLabel =
     config.mode === "race"
       ? `${Math.round(config.modeSettingSeconds / 60)} min`
-      : `${config.modeSettingSeconds}s`;
+      : config.mode === "test"
+        ? `${config.modeSettingSeconds} questions`
+        : `${config.modeSettingSeconds}s`;
   const pools = config.selectedPoolIds
     .map((id) => poolNamesById[id] ?? id)
     .join(" + ");
