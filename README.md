@@ -1,6 +1,6 @@
 # FlashCards
 
-A local, browser-based multiple-choice quiz game built as a study aid and general trivia game. Runs entirely client-side — no account, no server, no internet connection required once loaded. Play through three game modes (Sudden Death, Race, Quickdraw), earn Points and persistent Coins, climb per-mode/configuration leaderboards, and spend Coins on cosmetic themes and shop items.
+A local, browser-based multiple-choice quiz game built as a study aid and general trivia game. Runs entirely client-side — no account, no server, no internet connection required once loaded. Play through four game modes (Sudden Death, Race, Quickdraw, Test), earn Points and persistent Coins, climb per-mode/configuration leaderboards, and spend Coins on cosmetic themes and shop items.
 
 See [`brief.txt`](brief.txt), [`detailed-brief.txt`](detailed-brief.txt) and [`implementation-guide.md`](implementation-guide.md) for the full design/spec this project was built from.
 
@@ -90,6 +90,7 @@ Rules (enforced by the built-in validator; a malformed pool is skipped with a pl
 - **Sudden Death** — answer as many questions correctly in a row as possible; one wrong answer (or a timeout) ends the run. Countdown per question is configurable.
 - **Race** — answer as many questions correctly as possible before an overall time limit runs out. No per-question timer.
 - **Quickdraw** — 3 lives, with a short configurable timer per question.
+- **Test** — a configurable number of questions (5–100) with no timer and no feedback while answering; you get through every question regardless of right or wrong answers, with your progress shown as "Question X / N". At the end you get a total score, a grade (A+, A, B, C, D, E or F), a summary of pools/topics/difficulties to improve, and a button to review every incorrect question with your answer and the correct answer. Test runs earn no Points, Coins or high-score entries.
 
 Every completed run scores Points (based on difficulty, streak, and answer speed) which convert into persistent Coins, spendable in the Shop on themes, card styles, avatars, celebration effects and sound packs. High scores are tracked per unique combination of mode + numeric setting + selected pools + difficulty filter.
 
