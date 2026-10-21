@@ -47,6 +47,7 @@ export function buildTestReport(answers: TestAnswer[]): TestReport {
     percent,
     grade: computeGrade(percent),
     incorrect,
+    answers,
     byPool: tally(answers, (a) => [a.poolId]),
     byTag: tally(answers, (a) => a.question.tags ?? []),
     byDifficulty: tally(answers, (a) => [a.question.difficulty ?? "Medium"]),

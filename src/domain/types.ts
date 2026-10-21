@@ -136,6 +136,7 @@ export interface TestReport {
   percent: number; // 0-100, rounded
   grade: Grade;
   incorrect: TestAnswer[];
+  answers: TestAnswer[];
   byPool: TestBreakdownEntry[];
   byTag: TestBreakdownEntry[];
   byDifficulty: TestBreakdownEntry[];

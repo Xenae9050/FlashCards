@@ -23,11 +23,14 @@ function pct(e: { correct: number; total: number }) {
 function TestResults() {
   const { state, dispatch } = useAppState();
   const headingRef = useFocusOnMount<HTMLHeadingElement>();
-  const [showIncorrect, setShowIncorrect] = useState(false);
+  const [view, setView] = useState<"none" | "incorrect" | "all">("none");
   const report = state.lastResultSummary!.testReport!;
   const poolNames = new Map(
-    (state.poolCatalog?.pools ?? []).map((p) => [p.id, p.poolName]),
+    (state.poolCatalog?.pools ?? []).map((p) => [p.id, p.poolName])
   );
+
+  const toggleView = (target: "incorrect" | "all") =>
+    setView((v) => (v === target ? "none" : target));
 
   const weak = (entries: typeof report.byPool) =>
     entries.filter((e) => e.correct < e.total && pct(e) < 80).slice(0, 5);
@@ -115,41 +118,63 @@ function TestResults() {
         </CardContent>
       </Card>
 
-      {report.incorrect.length > 0 && (
-        <Button
-          variant="outline"
-          className="mt-4"
-          aria-expanded={showIncorrect}
-          onClick={() => setShowIncorrect((v) => !v)}
-        >
-          {showIncorrect ? "Hide" : "Show"} incorrect questions (
-          {report.incorrect.length})
-        </Button>
-      )}
-      {showIncorrect && (
+      <div className="mt-4 flex flex-wrap gap-2">
+        {report.incorrect.length > 0 && (
+          <Button
+            variant="outline"
+            aria-expanded={view === "incorrect"}
+            onClick={() => toggleView("incorrect")}
+          >
+            {view === "incorrect" ? "Hide" : "Show"} incorrect questions (
+            {report.incorrect.length})
+          </Button>
+        )}
+        {report.answers.length > 0 && (
+          <Button
+            variant="outline"
+            aria-expanded={view === "all"}
+            onClick={() => toggleView("all")}
+          >
+            {view === "all" ? "Hide" : "Show"} all answers (
+            {report.answers.length})
+          </Button>
+        )}
+      </div>
+      {view !== "none" && (
         <ol className="mt-4 flex flex-col gap-3">
-          {report.incorrect.map((a, i) => (
-            <li key={`${a.poolId}-${a.question.id}`}>
-              <Card>
-                <CardContent className="flex flex-col gap-1 text-sm">
-                  <p className="font-medium">
-                    {i + 1}. {a.question.prompt}
-                  </p>
-                  <p className="text-destructive">
-                    Your answer: {a.selected ?? "(no answer)"}
-                  </p>
-                  <p className="text-success">
-                    Correct answer: {a.question.correctChoice}
-                  </p>
-                  {a.question.explanation && (
-                    <p className="text-muted-foreground">
-                      {a.question.explanation}
+          {(view === "all" ? report.answers : report.incorrect).map((a, i) => {
+            const isCorrect = a.selected === a.question.correctChoice;
+            return (
+              <li key={`${a.poolId}-${a.question.id}`}>
+                <Card>
+                  <CardContent className="flex flex-col gap-1 text-sm">
+                    <p className="font-medium">
+                      {i + 1}. {a.question.prompt}
                     </p>
-                  )}
-                </CardContent>
-              </Card>
-            </li>
-          ))}
+                    {isCorrect ? (
+                      <p className="text-success">
+                        Your answer (correct): {a.selected}
+                      </p>
+                    ) : (
+                      <>
+                        <p className="text-destructive">
+                          Your answer: {a.selected ?? "(no answer)"}
+                        </p>
+                        <p className="text-success">
+                          Correct answer: {a.question.correctChoice}
+                        </p>
+                      </>
+                    )}
+                    {a.question.explanation && (
+                      <p className="text-muted-foreground">
+                        {a.question.explanation}
+                      </p>
+                    )}
+                  </CardContent>
+                </Card>
+              </li>
+            );
+          })}
         </ol>
       )}
 
