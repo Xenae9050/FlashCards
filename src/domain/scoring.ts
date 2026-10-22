@@ -1,4 +1,4 @@
-import type { Difficulty } from "./types";
+import type { Difficulty, Grade } from "./types";
 import {
   POINTS_BASE_BY_DIFFICULTY,
   STREAK_MULTIPLIER_STEP,
@@ -6,6 +6,7 @@ import {
   SPEED_BONUS_MULTIPLIER,
   COINS_PER_POINTS_DIVISOR,
   COINS_MINIMUM_PER_CORRECT_ANSWER,
+  COINS_PER_TEST_QUESTION_BY_GRADE,
 } from "./constants";
 
 export function streakMultiplierFor(
@@ -26,6 +27,10 @@ export function computePoints(
   const streakMultiplier = streakMultiplierFor(streakCountAfterThisAnswer);
   const speedBonus = isFast ? SPEED_BONUS_MULTIPLIER : 1.0;
   return Math.round(base * streakMultiplier * speedBonus);
+}
+
+export function computeTestCoins(totalQuestions: number, grade: Grade): number {
+  return Math.round(totalQuestions * COINS_PER_TEST_QUESTION_BY_GRADE[grade]);
 }
 
 export function computeCoinsForAnswer(pointsEarned: number): number {

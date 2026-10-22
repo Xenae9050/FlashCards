@@ -8,6 +8,7 @@ interface Props {
   selectedChoice: string | null;
   wasCorrect: boolean | null;
   canContinue: boolean;
+  continueLabel?: string;
   onContinue: () => void;
 }
 
@@ -16,6 +17,7 @@ export function RevealPanel({
   selectedChoice,
   wasCorrect,
   canContinue,
+  continueLabel = "Continue",
   onContinue,
 }: Props) {
   const statusText =
@@ -47,7 +49,7 @@ export function RevealPanel({
         </p>
       )}
       <Button className="mt-4" disabled={!canContinue} onClick={onContinue}>
-        Continue
+        {continueLabel}
       </Button>
     </div>
   );

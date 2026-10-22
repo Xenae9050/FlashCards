@@ -26,7 +26,7 @@ function TestResults() {
   const [view, setView] = useState<"none" | "incorrect" | "all">("none");
   const report = state.lastResultSummary!.testReport!;
   const poolNames = new Map(
-    (state.poolCatalog?.pools ?? []).map((p) => [p.id, p.poolName])
+    (state.poolCatalog?.pools ?? []).map((p) => [p.id, p.poolName]),
   );
 
   const toggleView = (target: "incorrect" | "all") =>
@@ -62,6 +62,17 @@ function TestResults() {
               {report.grade}
             </p>
           </div>
+        </CardContent>
+      </Card>
+
+      <Card className="mt-4">
+        <CardContent className="flex items-center justify-between">
+          <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+            <Coins className="size-4" /> Coins earned
+          </span>
+          <span className="font-medium">
+            {state.lastResultSummary!.coinsEarnedThisRun}
+          </span>
         </CardContent>
       </Card>
 

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useAppState } from "../../state/AppStateContext";
+import { endReasonForCurrentAnswer } from "../../state/appReducer";
 import { useCountdown } from "../../hooks/useCountdown";
 import { TopStatusBar } from "../gameplay/TopStatusBar";
 import { AnswerGrid } from "../gameplay/AnswerGrid";
@@ -41,7 +42,11 @@ function ActiveQuestion({
   const run = state.run!;
   const question = run.currentDeckQuestion!.question;
   const mode = run.config.mode;
-
+  // When this answer ends the run, the player must click Continue themselves (no auto-advance)
+  // so they can take as long as they need to read the correction.
+  const endsRun =
+    endReasonForCurrentAnswer(run) !== null ||
+    run.deckPointer >= run.deck.length;
   // Per-question countdown (Sudden Death / Quickdraw only). Duration is computed relative to
   // the absolute questionShownAt timestamp (which RESUME shifts forward by the paused duration),
   // so a pause/resume-triggered remount always reproduces the correct remaining time.
@@ -79,16 +84,22 @@ function ActiveQuestion({
       () => dispatch({ type: "MIN_VIEW_TIME_ELAPSED" }),
       minViewDelay,
     );
-    const autoAdvanceTimer = setTimeout(
-      () => dispatch({ type: "CONTINUE" }),
-      autoAdvanceDelay,
-    );
+    const autoAdvanceTimer = endsRun
+      ? null
+      : setTimeout(() => dispatch({ type: "CONTINUE" }), autoAdvanceDelay);
     return () => {
       clearTimeout(minViewTimer);
-      clearTimeout(autoAdvanceTimer);
+      if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [run.revealVisible, run.isPaused, run.deckPointer, mode, dispatch]);
+  }, [
+    run.revealVisible,
+    run.isPaused,
+    run.deckPointer,
+    endsRun,
+    mode,
+    dispatch,
+  ]);
 
   const totalMs = run.config.modeSettingSeconds * 1000;
   const isRace = mode === "race";
@@ -144,6 +155,7 @@ function ActiveQuestion({
           selectedChoice={run.selectedAnswerText}
           wasCorrect={run.wasCorrect}
           canContinue={run.canContinue}
+          continueLabel={endsRun ? "See results" : "Continue"}
           onContinue={() => dispatch({ type: "CONTINUE" })}
         />
       )}

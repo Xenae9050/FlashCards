@@ -1,4 +1,4 @@
-import type { Mode, Difficulty } from "./types";
+import type { Mode, Difficulty, Grade } from "./types";
 
 export const MODE_SETTING_RANGES: Record<
   Mode,
@@ -54,6 +54,16 @@ export const COINS_MINIMUM_PER_CORRECT_ANSWER = 1;
 export const COINS_BONUS_NEW_TOP_10 = 50;
 export const COINS_BONUS_NEW_NUMBER_ONE_ADDITIONAL = 50; // on top of the Top-10 bonus ⇒ 100 total for #1
 export const COINS_BONUS_POOL_EXHAUSTED = 25;
+// Test mode: coins per question in the test, multiplied by the final grade's rate (rounded).
+export const COINS_PER_TEST_QUESTION_BY_GRADE: Record<Grade, number> = {
+  "A+": 2,
+  A: 1.5,
+  B: 1,
+  C: 0.75,
+  D: 0.5,
+  E: 0.25,
+  F: 0,
+};
 
 // --- Reveal / Continue timing (DB §4.5) ---
 export const MIN_VIEW_TIME_MS: Record<Mode, number> = {

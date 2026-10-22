@@ -12,7 +12,11 @@ import type {
 import type { SaveData } from "../persistence/saveFiles";
 import type { Action } from "./actions";
 import { buildDeck, fisherYatesShuffle } from "../domain/deck";
-import { computePoints, computeCoinsForAnswer } from "../domain/scoring";
+import {
+  computePoints,
+  computeCoinsForAnswer,
+  computeTestCoins,
+} from "../domain/scoring";
 import { computeBucketKey, insertHighScoreEntry } from "../domain/bucketKey";
 import { buildTestReport } from "../domain/testReport";
 import {
@@ -262,8 +266,16 @@ function processResults(state: AppState): AppState {
   const run = state.run;
   if (run.config.mode === "test") {
     const report = buildTestReport(run.testAnswers);
+    const testCoins = computeTestCoins(report.total, report.grade);
     return {
       ...state,
+      saveData: {
+        ...state.saveData,
+        wallet: {
+          ...state.saveData.wallet,
+          coins: state.saveData.wallet.coins + testCoins,
+        },
+      },
       run: { ...run, resultsProcessed: true },
       lastResultSummary: {
         config: run.config,
@@ -271,9 +283,9 @@ function processResults(state: AppState): AppState {
         correctCount: report.correct,
         attemptedCount: report.total,
         pointsTotal: 0,
-        coinsEarnedThisRun: 0,
+        coinsEarnedThisRun: testCoins,
         milestoneBonus: 0,
-        totalCoinsThisRun: 0,
+        totalCoinsThisRun: testCoins,
         rank: null,
         bucketKey: computeBucketKey(run.config),
         testReport: report,
@@ -332,7 +344,8 @@ function processResults(state: AppState): AppState {
 }
 
 /** Determines whether the answer just revealed ends the run, and if so with which reason. */
-function endReasonForCurrentAnswer(run: RunState): RunEndReason | null {
+export function endReasonForCurrentAnswer(run: RunState): RunEndReason | null {
+  if (run.runEndReason) return run.runEndReason;
   if (run.config.mode === "sudden-death" && run.wasCorrect === false)
     return "mistake";
   if (
@@ -482,6 +495,13 @@ export function appReducer(state: AppState, action: Action): AppState {
 
     case "OVERALL_TIMER_EXPIRED": {
       if (!state.run) return state;
+      // Let the player finish reading the correction; Continue then goes to Results.
+      if (state.run.revealVisible) {
+        return {
+          ...state,
+          run: { ...state.run, runEndReason: "clock-expired" },
+        };
+      }
       return processResults({
         ...state,
         run: { ...state.run, runEndReason: "clock-expired" },
